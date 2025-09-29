@@ -1,0 +1,112 @@
+    <!doctype html>
+    <html lang="uk">
+    <head>
+      <meta charset="utf-8" />
+      <meta name="viewport" content="width=device-width,initial-scale=1" />
+      <title>Головна — legacy-version</title>
+      <link rel="stylesheet" href="legacy.css">
+    </head>
+    <body>
+      <div class="page" id="page-root">
+
+        <aside class="left" aria-label="Бічна панель">
+          <section class="top" id="block-1">
+            <h3>Про українців</h3>
+            <div id="content-1">
+              <p>Українці — народ з давньою історією, що зберігає культуру та традиції.</p>
+            </div>
+          </section>
+
+          <section class="bottom" id="block-4">
+            <h4>Національні символи</h4>
+            <div id="content-4">
+              <p>Прапор, герб, гімн — основні символи державності України.</p>
+            </div>
+          </section>
+        </aside>
+
+        <div class="gutter" aria-hidden="true"></div>
+
+        <main class="right" role="main">
+          <header class="brand" id="block-2">
+            <h1>Слава Україні!</h1>
+            <div id="content-2" class="subtitle">Вшанування пам'яті та культури.</div>
+          </header>
+
+          <article class="main" id="block-3">
+            <h2>Велич України</h2>
+            <div id="content-3"> 
+            </div>
+          </article>
+
+          <footer class="footer" id="block-5">
+            <nav class="menu" aria-label="Головне меню">
+              <ul>
+                <li><a href="#page1" data-page="page1">1 — Вступ</a></li>
+                <li><a href="#page2" data-page="page2">2 — Історія</a></li>
+                <li><a href="#page3" data-page="page3">3 — Культура</a></li>
+                <li><a href="#page4" data-page="page4">4 — Символи</a></li>
+                <li><a href="#page5" data-page="page5">5 — Молодь</a></li>
+              </ul>
+            </nav>
+            <div class="footer-right">Героям слава!</div>
+          </footer>
+
+        </main>
+
+      </div>
+
+
+<script>
+const pages = {
+  page1: {
+    c1:`<p>Вступ: відвага та мужність українців.</p><img src="Images/geroyi-Ukrayini.jpeg" alt="Вступ">`,
+    c2:`<div>Орієнтація: головні цінності та гасла.</div>`,
+    c3:`<p>Україна — країна з багатою історією та традиціями.</p><p>Тут зібрано матеріали про її символи, культуру та історію.</p><img src="Images/Головна ілюстрація.jpeg" alt="Головна ілюстрація">`,
+    c4:`<p>Прапор — синьо-жовтий; Герб — тризуб; Гімн — державна пісня.</p><img src="Images/Символи.jpg" alt="Символи">`
+  },
+  page2: {
+    c1:`<p>Історичний контекст: від Київської Русі до сучасності.</p><img src="Images/Київська русь.jpeg" alt="Історія">`,
+    c2:`<div>Розділ історії: ключові події.</div>`,
+    c3:`<p>Короткий огляд історичних періодів, пам'ятки та дати.</p><ul><li>Київська Русь</li><li>Козацька доба</li><li>Нова доба</li></ul><img src="Images/Пам ятка київської русі.jpg" alt="Пам'ятки">`,
+    c4:`<p>Пам'ятки, музеї, меморіали.</p>`
+  },
+  page3: {
+    c1:`<p>Культурний розділ: мова, пісні, мистецтво.</p><img src="Images/Пес протон.jpg" alt="Культура">`,
+    c2:`<div>Розвиток культури та традицій.</div>`,
+    c3:`<p>Тут зібрано тексти, ілюстрації та посилання на культурні проєкти.</p><img src="Images/русоріз.jpg" usemap = "#rusoriz"> <map name ="rusoriz">
+      <area shape = "rect" coords= "528, 828, 816, 882" alt = "rusoriz" href= "https://www.sternenkofund.org/en/fundraisings/rusoriz"> </map>` ,
+    c4:`<p>Фестивалі, обряди, народні звичаї.</p>`
+  },
+  page4: {
+    c1:`<p>Детальніше про символи: пояснення кольорів прапора та значення герба.</p><img src="Images/герб.jpeg" alt="Пояснення символів">`,
+    c2:`<div>Розділ символів: автентичні описи та ресурси.</div>`,
+    c3:`<p>Пояснення символів, їхня історія та використання.</p>`,
+    c4:`<p>Джерела: офіційні описи символів.</p><p><a href="#" onclick="alert('Це приклад посилання');return false;">Документ (приклад)</a></p>`
+  },
+  page5: {
+    c1:`<p>Про молодь: освіта, ініціативи, волонтерство.</p><img src="Images/Молодь.jpeg" alt="Молодь">`,
+    c2:`<div>Розділ молоді: проєкти та можливості.</div>`,
+    c3:`<p>Історії успіху молодих людей, освітні ресурси.</p>`,
+    c4:`<p>Стипендії, конкурси, молодіжні платформи.</p>`
+  }
+};
+
+function renderPage(name){
+  const p = pages[name] || pages.page1;
+  document.getElementById('content-1').innerHTML = p.c1;
+  document.getElementById('content-2').innerHTML = p.c2;
+  document.getElementById('content-3').innerHTML = p.c3;
+  document.getElementById('content-4').innerHTML = p.c4;
+
+  document.querySelectorAll('nav.menu a').forEach(a=>{
+    if(a.dataset.page===name){a.classList.add('active')}else a.classList.remove('active');
+  });
+}
+
+window.addEventListener('hashchange', ()=>renderPage(location.hash.replace('#','')));
+window.addEventListener('load', ()=>renderPage(location.hash.replace('#','')||'page1'));
+</script>
+
+    </body>
+    </html>

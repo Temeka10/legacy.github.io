@@ -1,0 +1,40 @@
+
+:root{
+  --left-w:22%;
+  --gutter:2%;
+  --accent:#005bbb;
+  --accent-2:#ffd400;
+  --footer-h:84px;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;padding:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;color:#111}
+
+/* Classic floats layout */
+.container{width:100%;min-height:100vh;padding:0 12px}
+.left{float:left;width:22%;padding:18px;background:#fff7f0}
+.right{margin-left:24%;padding:18px} /* leave space for left column + gutter */
+
+.left .top{padding:14px;border:1px solid #e7d7cc;border-radius:8px;overflow:auto}
+.left .bottom{padding:14px;background:#f0fbf6;border-radius:8px;margin-top:12px;overflow:auto;word-wrap:break-word}
+
+.brand{background:linear-gradient(90deg,var(--accent),#8fc6ff);color:#fff;padding:16px;border-radius:8px}
+.subtitle{margin-top:8px;font-size:0.95em;opacity:0.95}
+.main{background:#fff;border-radius:8px;padding:18px;min-height:200px;overflow-wrap:break-word}
+
+.footer{clear:both;background:var(--accent);color:#fff;padding:12px;border-radius:8px;display:block;margin-top:18px;height:auto}
+.footer-right{min-width:140px;color:#fff;font-weight:700;text-align:right;margin-top:6px}
+
+nav.menu ul{margin:0;padding:0;list-style:none}
+nav.menu li{display:inline-block;margin-right:8px}
+nav.menu a{display:inline-block;padding:8px 12px;border-radius:6px;color:#063a7b;text-decoration:none;font-weight:700;background:var(--accent-2)}
+nav.menu a.active{outline:3px solid rgba(0,0,0,0.08)}
+
+img{max-width:100%;height:auto;border-radius:6px;display:block}
+
+@media (max-width:800px){
+  .left{float:none;width:100%}
+  .right{margin-left:0}
+}
+
+h1,h2,h3,h4{margin:0 0 8px 0}
+p{margin:0 0 12px 0;line-height:1.45}
